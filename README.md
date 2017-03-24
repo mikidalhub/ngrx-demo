@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
 
+Actually this is a demo application using the ngrx/store library...still under construction
+This is an application that is exists already in the net but I transformed a little bit (using @effects for instance)
+Keywords
+    - one way data flow, redux architecture approach
+    - clean components, just the store injected
+    - using @effect for a smarter server communication
+    - reactive X approach for communications between components    
+Mention: there are some parts that is not used in the app
+
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
