@@ -30,11 +30,12 @@ export class SearchProximityComponent {
 
   active = false;
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(private ref: ChangeDetectorRef) {}
 
   onLocation($event: any) {
     this.active = $event.target.checked;
     this.getLocation.emit( this.active);
+    this.ref.markForCheck();
   }
 
   onRadius($event: any) {

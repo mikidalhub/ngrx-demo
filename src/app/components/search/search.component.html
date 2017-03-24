@@ -7,17 +7,17 @@
                             [disabled]="disableSearch || errorLocation"
                             [ngClass]="{ disabled: disableSearch }"></proximity-selector>
     </div>
-    <!--<div class="row col-md-8 alert alert-danger" *ngIf="errorEmptySearch">-->
-    <!--<p>Can't use geolocalization with an empty searchbox</p>-->
-    <!--</div>-->
+    <div class="row col-md-8 alert alert-danger" *ngIf="errorEmptySearch">
+    <p>Can't use geolocalization with an empty searchbox</p>
+    </div>
     <div class="row col-md-8 alert alert-warning" *ngIf="errorLocation">
         <p>{{ errorLocationMessage }}</p>
     </div>
     <div class="row col-md-8">
-        <!--<p>-->
-        <!--Try to type something in the searchbox, play with the location and with radius: the above state will-->
-        <!--always be consistent and up to date.-->
-        <!--</p>-->
+        <p>
+        Try to type something in the searchbox, play with the location and with radius: the above state will
+        always be consistent and up to date.
+        </p>
         <pre><p class="state">{{ state | json }}</p></pre>
         <p class="state" *ngIf="disableSearch">state is empty</p>
         <h2 *ngIf="!disableSearch">Search results:</h2>
@@ -33,16 +33,5 @@
             <img src="{{ result.thumbnailUrl }}" />
         </div>
     </div>
-    <!--<div class="row col-md-8">-->
-    <!--<div class="carousel slide" id="myCarousel">-->
-    <!--<div class="carousel-inner">-->
-    <!--<div *ngFor="let result of searchResults; let i = index" class="item active">-->
-    <!--<div class="col-lg-4 col-xs-4 col-md-4 col-sm-4">-->
-    <!--<a href="#"><img src="{{ result.thumbnailUrl }}" class="img-responsive"></a></div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>-->
-    <!--<a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>-->
-    <!--</div>-->
-    <!--</div>-->
+
 </section>
