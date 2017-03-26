@@ -39,6 +39,7 @@ import { Action } from '@ngrx/store';
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
+      { path: '', redirectTo: '/search', pathMatch: 'full' },
       { path: 'search', component: SearchComponent },
       { path: 'carousel', component: CarouselComponent },
       { path: 'tabs', component: HsliderComponent },

@@ -25,7 +25,7 @@
     <div class="row col-md-8">
         <h2 *ngIf="disableSearch || searchResult$.length == 0">No results</h2>
     </div>
-    <div class="row col-md-8">
+    <div class="row col-md-8"  *ngIf="!disableSearch">
         <div *ngFor="let result of searchResult$ | async" class="thumbnail col-sm-6 col-md-4">
             <div class="caption">
                 <h3>{{ result.title }}</h3>

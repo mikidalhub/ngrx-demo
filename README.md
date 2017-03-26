@@ -8,7 +8,7 @@ Actually this is a demo application using the ngrx/store library!
 This application already exists in the net but I transformed a little bit to be more elegant!
 Patterns used:
 
-    - Reactive x pattern  -> every communication happand via Observables
+    - Reactive x pattern  -> every communication happens via Observables
     - Loose coupling -> each of its components has, or little or no knowledge of the definitions of other separate components
     - Single Responsability -> every component or class have responsibility over just their part "A class should have only one reason to change"
     - Functional programming approach
@@ -53,3 +53,4 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Feel free to contact me if you got questions: mikidal@gmail.com 
