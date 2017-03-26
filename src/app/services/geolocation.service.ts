@@ -6,9 +6,8 @@ import {Observable} from "rxjs/Observable";
 export class GeolocationService {
 
     onLocation():Observable<any> {
-        console.log('here')
         return Observable.create(function (observer) {
-            //// Yield a single value and complete
+            //get the location and give to observer's next
             navigator.geolocation.getCurrentPosition((position:any) => {
                 return observer.next({
                     latitude: position.coords.latitude,

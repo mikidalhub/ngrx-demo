@@ -2,18 +2,37 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
 
-Actually this is a demo application using the ngrx/store library...still under construction
-This is an application that is exists already in the net but I transformed a little bit (using @effects for instance)
+Under construction...
+
+Actually this is a demo application using the ngrx/store library! 
+This application already exists in the net but I transformed a little bit to be more elegant!
+Patterns used:
+
+    - Reactive x pattern  -> every communication happand via Observables
+    - Loose coupling -> each of its components has, or little or no knowledge of the definitions of other separate components
+    - Single Responsability -> every component or class have responsibility over just their part "A class should have only one reason to change"
+    - Functional programming approach
+    - Redux / One way data comminication
+    
 Keywords
-    - one way data flow, redux architecture approach
-    - clean components, just the store injected
-    - using @effect for a smarter server communication
-    - reactive X approach for communications between components    
-Mention: there are some parts that is not used in the app
+
+    - centralized Store architecture 
+    - clean/stateless components, just the store injected and some action dispatch occure
+    - using @effect for a smarter server communication -> elegant way for separating the concepts
+    - reactive X approach for communications between components -> it happens actually via the store    
+
+Mention: there are some parts that is not used in the app!
+
+## Prerequisites
+Update you global CLI to the latest
+
+    1. npm uninstall -g angular-cli
+    2. npm install -g @angular/cli
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+ Actually make a change somewhere in the app if the first bundle creation ends with error!
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.

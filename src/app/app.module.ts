@@ -21,10 +21,9 @@ import { HsliderComponent } from './components/hslider/hslider.component';
 
 import {SearchEffects} from './effects/search.effect';
 import {SearchActions} from "./store/actions";
-import {INITIAL_APPLICATION_STATE} from "./store/application-state";
-import {ApplicationState} from "./store/application-state";
+//import {INITIAL_APPLICATION_STATE} from "./store/application-state";
+//import {ApplicationState} from "./store/application-state";
 import { Action } from '@ngrx/store';
-import  * as _ from "lodash";
 
 @NgModule({
   declarations: [

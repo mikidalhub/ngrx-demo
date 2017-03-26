@@ -1,5 +1,6 @@
 /**
- * This is Smart component or Smart Component because it knows about Store,communicate with services
+ * This is StateLess component, it just dispatch actions
+ * Actually if it's need some info then it just subscribe for it on store
  */
 
 import { Component, OnInit, OnChanges, ChangeDetectorRef } from '@angular/core';
@@ -17,13 +18,13 @@ import {SearchActions} from '../../store/actions';
 export class SearchComponent implements OnInit {
 
   private state:CurrentSearch;
-  private currentSearch:Observable<CurrentSearch>;
-  private searchResult:Observable<SearchResult[]>;
-  private searchResults: SearchResult[] = [];
+  private currentSearch$: Observable<CurrentSearch>;
+  private searchResult$: Observable<SearchResult[]>;
   private disableSearch = false;
   private errorEmptySearch = true;
   private errorLocation = false;
   private errorLocationMessage = '';
+
 
   static StoreEvents = {
     text: 'SearchComponent:TEXT_CHANGED',
@@ -34,8 +35,8 @@ export class SearchComponent implements OnInit {
   };
 
   constructor(private store:Store<any>) {
-    this.currentSearch = this.store.select<CurrentSearch>('currentSearch'); //get the latest info about the latest search subject
-    this.searchResult = this.store.select<SearchResult[]>('searchResult');
+    this.currentSearch$ = this.store.select<CurrentSearch>('currentSearch'); //get the latest info about the latest search subject
+    this.searchResult$ = this.store.select<SearchResult[]>('searchResult');
   }
 
   /**
@@ -43,7 +44,7 @@ export class SearchComponent implements OnInit {
    * Subscribe to the last status of the result as well and show in a list
    */
   ngOnInit() {
-    this.currentSearch.subscribe((state: CurrentSearch) => {
+    this.currentSearch$.subscribe((state: CurrentSearch) => {
       this.state = state;
       if (state && state.name && state.name.length > 0) {
         this.disableSearch = false;
@@ -52,7 +53,6 @@ export class SearchComponent implements OnInit {
       } else {
         this.disableSearch = true;
         this.errorEmptySearch = true;
-        this.searchResults = [];
       }
       if (state && state.error) {
         this.errorLocation = true;
@@ -60,10 +60,6 @@ export class SearchComponent implements OnInit {
       } else {
         this.errorLocation = false;
       }
-    });
-
-    this.searchResult.subscribe((state: SearchResult[]) => {
-      this.searchResults = state || [];
     });
   }
 

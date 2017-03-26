@@ -5,8 +5,17 @@ import {CurrentSearch} from "../models/current-search";
 import {SearchActions} from "../store/actions";
 
 export type CurrentSearchState = CurrentSearch;
+const initState = {
+  name: '',
+  location: {
+    latitude: 0,
+    longitude: 0
+  },
+  radius: 0,
+  error: ''
+}
 
-export const SearchReducer: ActionReducer<CurrentSearch> = (state: CurrentSearch, action: Action) => {
+export const SearchReducer: ActionReducer<CurrentSearch> = (state: CurrentSearch = initState, action: Action) => {
 
     switch (action.type) {
         case SearchComponent.StoreEvents.text:
