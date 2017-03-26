@@ -9,8 +9,10 @@ This application already exists in the net but I transformed a little bit to be 
 Patterns used:
 
     - Reactive x pattern  -> every communication happens via Observables
-    - Loose coupling -> each of its components has, or little or no knowledge of the definitions of other separate components
-    - Single Responsability -> every component or class have responsibility over just their part "A class should have only one reason to change"
+    - Loose coupling -> each of its components has, or little or no knowledge of the definitions of
+      other separate components
+    - Single Responsability -> every component or class have responsibility over just their part 
+      "A class should have only one reason to change"
     - Functional programming approach
     - Redux / One way data comminication
     
