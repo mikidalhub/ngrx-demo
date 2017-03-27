@@ -1,6 +1,7 @@
 /**
  * This is StateLess component, it just dispatch actions
  * Actually if it's need some info then it just subscribe for it on store
+ * created by Miki Baczo
  */
 
 import { Component, OnInit, OnChanges, ChangeDetectorRef } from '@angular/core';

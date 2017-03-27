@@ -22,16 +22,4 @@ export class GeolocationService {
         });
   }
 
-
-
-  //onRadius($event: any) {
-  //  const radius = parseInt($event.target.value, 10);
-  //  //this.store.dispatch({
-  //  //  type: SearchActions.StoreEvents.radius,
-  //  //  payload: {
-  //  //    radius: radius
-  //  //  }
-  //  //});
-  //}
-
 }

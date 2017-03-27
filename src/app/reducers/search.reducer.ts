@@ -4,17 +4,20 @@ import {SearchComponent} from '../components/search/search.component';
 import {CurrentSearch} from "../models/current-search";
 import {SearchActions} from "../store/actions";
 
-export type CurrentSearchState = CurrentSearch;
 const initState = {
   name: '',
-  location: {
-    latitude: 0,
-    longitude: 0
-  },
-  radius: 0,
-  error: ''
-}
+  location: null,
+  radius: null,
+  error: null
+};
 
+/**
+ * This is the Reducer of the type <CurrentSearch>, that is an object, model in the Store that looks like the initState
+ * @param state
+ * @param action
+ * @returns {any}
+ * @constructor
+ */
 export const SearchReducer: ActionReducer<CurrentSearch> = (state: CurrentSearch = initState, action: Action) => {
 
     switch (action.type) {
