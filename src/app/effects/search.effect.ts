@@ -18,10 +18,13 @@ export class SearchEffects {
                 private geosvc:GeolocationService
         ) {}
 
+
     @Effect() loadMovies$: Observable<Action> = this.update$
         .ofType(SearchActions.LOAD_MOVIES)
+        .do(val => console.log("action received", val))
         .map(action => action.payload)
         .switchMap(currentSearch => this.svc.search(currentSearch))
+        .do(val => console.log("data received from service", val))
         .map(videos => this.searchActions.loadMoviesSuccess(videos))
         .catch(error => {
             console.error('Error at load movies', error);

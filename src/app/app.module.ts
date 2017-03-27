@@ -17,6 +17,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { HsliderComponent } from './components/hslider/hslider.component';
 import {SearchEffects} from './effects/search.effect';
 import {SearchActions} from "./store/actions";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 
 
 @NgModule({
@@ -41,11 +42,11 @@ import {SearchActions} from "./store/actions";
     StoreModule.provideStore({
                                 currentSearch: SearchReducer,
                                 searchResult: SearchResultReducer }),
-    EffectsModule.run(SearchEffects)
+    EffectsModule.run(SearchEffects),
+    StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
   providers: [SearchActions,YoutubeService, GeolocationService],
   bootstrap: [AppComponent]
 })
-
 
 export class AppModule { }
