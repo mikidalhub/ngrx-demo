@@ -6,7 +6,7 @@ import {Observable} from "rxjs/Observable";
 export class GeolocationService {
 
     onLocation():Observable<any> {
-        return Observable.create(function (observer) {
+        return Observable.create((observer) => {
             //get the location and give to observer's next
             navigator.geolocation.getCurrentPosition((position:any) => {
                 return observer.next({
@@ -16,7 +16,7 @@ export class GeolocationService {
             });
 
             // Any cleanup logic might go here
-            return function () {
+            return () => {
                 console.log('disposed')
             }
         });

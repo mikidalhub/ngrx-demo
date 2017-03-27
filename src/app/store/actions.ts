@@ -23,9 +23,9 @@ export class SearchActions {
         };
     }
 
+//----------------------- SUCCESS ACTIONS----------------------------------------------------------
     static LOAD_GEOLOCATION_SUCCESS = 'Load Geolocation Success';
     loadGeoLocationSuccesss(location): Action {
-        console.log(location)
         return {
             type: SearchComponent.StoreEvents.position,
             payload: {position:location}
