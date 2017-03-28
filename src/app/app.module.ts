@@ -18,7 +18,8 @@ import { HsliderComponent } from './components/hslider/hslider.component';
 import {SearchEffects} from './effects/search.effect';
 import {SearchActions} from "./store/actions";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-
+import { storeFreeze } from 'ngrx-store-freeze';
+import { compose } from '@ngrx/core/compose';
 
 @NgModule({
   declarations: [

@@ -16,6 +16,14 @@ export class SearchActions {
         };
     }
 
+    static LOAD_EMPTY_MOVIES = 'Load Empty Movies';
+    loadEmptyMovies(): Action {
+        return {
+            type: SearchActions.LOAD_EMPTY_MOVIES,
+            payload: []
+        };
+    }
+
     static LOAD_GEOLOCATION = 'Load Geolocation';
     loadGeolocation(): Action {
         return {
@@ -27,7 +35,7 @@ export class SearchActions {
     static LOAD_GEOLOCATION_SUCCESS = 'Load Geolocation Success';
     loadGeoLocationSuccesss(location): Action {
         return {
-            type: SearchComponent.StoreEvents.position,
+            type: SearchComponent.SearchEvents.POSITION,
             payload: {position:location}
         };
     }
@@ -39,5 +47,7 @@ export class SearchActions {
             payload: movies
         };
     }
+
+
 
 }

@@ -27,12 +27,12 @@ export class SearchComponent implements OnInit {
   private errorLocationMessage = '';
 
 
-  static StoreEvents = {
-    text: 'SearchComponent:TEXT_CHANGED',
-    position: 'SearchComponent:POSITION',
-    radius: 'SearchComponent:RADIUS',
-    off: 'SearchComponent:OFF',
-    error: 'SearchComponent:ERROR'
+  static SearchEvents = {
+    TEXT: 'TEXT_CHANGED',
+    POSITION: 'POSITION_CHANGED',
+    RADIUS: 'RADIUS_CHANGED',
+    OFF: 'OFF_LOCATION',
+    ERROR: 'ERROR'
   };
 
   constructor(private store:Store<any>) {
@@ -54,6 +54,7 @@ export class SearchComponent implements OnInit {
       } else {
         this.disableSearch = true;
         this.errorEmptySearch = true;
+        //this.dispatchAction(SearchActions.LOAD_EMPTY_MOVIES,[]);
       }
       if (state && state.error) {
         this.errorLocation = true;
@@ -70,7 +71,7 @@ export class SearchComponent implements OnInit {
      */
   getRadius(radius):void {
     let payload = {radius: radius};
-    this.dispatchAction(SearchComponent.StoreEvents.radius,payload);
+    this.dispatchAction(SearchComponent.SearchEvents.RADIUS,payload);
   }
 
   /**
@@ -79,7 +80,7 @@ export class SearchComponent implements OnInit {
      */
   getText(text): void {
     let payload = {text: text}
-    this.dispatchAction(SearchComponent.StoreEvents.text,payload);
+    this.dispatchAction(SearchComponent.SearchEvents.TEXT,payload);
   }
 
   /**
@@ -90,7 +91,7 @@ export class SearchComponent implements OnInit {
      if(active){
        this.dispatchAction(SearchActions.LOAD_GEOLOCATION);
      } else {
-       this.dispatchAction(SearchComponent.StoreEvents.off, null );
+       this.dispatchAction(SearchComponent.SearchEvents.OFF, null );
      }
   }
 
