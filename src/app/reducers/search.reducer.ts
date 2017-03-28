@@ -5,7 +5,7 @@ import {CurrentSearch} from "../models/current-search";
 import {SearchActions} from "../store/actions";
 
 export type CurrentSearchState = CurrentSearch;
-const initialState:CurrentSearchState = {
+export const initialSearchState:CurrentSearchState = {
   name: '',
   location: null,
   radius: null,
@@ -20,8 +20,8 @@ const initialState:CurrentSearchState = {
  * @returns {any}
  * @constructor
  */
-export const SearchReducer: ActionReducer<CurrentSearch> = (state: CurrentSearch = initialState, action: Action) => {
-
+export const SearchReducer: ActionReducer<CurrentSearch> = (state: CurrentSearch = initialSearchState, action: Action) => {
+    console.log('in SearchReducer', action.type);
     switch (action.type) {
         case SearchComponent.SearchEvents.TEXT:
             return Object.assign({}, state, {

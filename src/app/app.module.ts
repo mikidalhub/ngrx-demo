@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {Store, StoreModule, Action} from "@ngrx/store";
+import {Store, StoreModule, Action, combineReducers} from "@ngrx/store";
 import { RouterModule, Routes } from '@angular/router';
 import {EffectsModule} from '@ngrx/effects';
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import {SearchActions} from "./store/actions";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import { storeFreeze } from 'ngrx-store-freeze';
 import { compose } from '@ngrx/core/compose';
+import {INITIAL_APPLICATION_STATE} from "./store/application-state";
 
 @NgModule({
   declarations: [
@@ -40,9 +41,9 @@ import { compose } from '@ngrx/core/compose';
       { path: 'carousel', component: CarouselComponent },
       { path: 'tabs', component: HsliderComponent },
     ]),
-    StoreModule.provideStore({
+    StoreModule.provideStore(storeFreeze, compose(combineReducers({
                                 currentSearch: SearchReducer,
-                                searchResult: SearchResultReducer }),
+                                searchResult: SearchResultReducer }), INITIAL_APPLICATION_STATE )),
     EffectsModule.run(SearchEffects),
     StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
