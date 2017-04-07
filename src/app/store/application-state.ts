@@ -1,14 +1,12 @@
-import {StoreData} from "./store-data";
-import {UiState} from "./ui-state";
-import {INITIAL_UI_STATE} from "./ui-state";
-import {INITIAL_STORE_DATA} from "./store-data";
+import {StoreData, INITIAL_STORE_DATA} from "./store-data";
+import {UiState, INITIAL_UI_STATE} from "./ui-state";
 
 export interface ApplicationState{
-  currentSearch: UiState;
-  searchResult: StoreData;
+  uiState: UiState;
+  storeData: StoreData;
 }
 
 export const INITIAL_APPLICATION_STATE: ApplicationState = {
-  currentSearch: INITIAL_UI_STATE,
-  searchResult: INITIAL_STORE_DATA
+  uiState: INITIAL_UI_STATE,
+  storeData: INITIAL_STORE_DATA
 }

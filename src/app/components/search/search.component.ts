@@ -10,6 +10,8 @@ import {Store} from "@ngrx/store";
 import {CurrentSearch} from "../../models/current-search";
 import {SearchResult} from "../../models/search-result";
 import {SearchActions} from '../../store/actions';
+import {ApplicationState} from "../../store/application-state";
+import {UiState} from "../../store/ui-state";
 
 @Component({
   selector: 'app-search',
@@ -20,12 +22,12 @@ export class SearchComponent implements OnInit {
 
   private state:CurrentSearch;
   private currentSearch$: Observable<CurrentSearch>;
+  private uiState$: Observable<UiState>;
   private searchResult$: Observable<SearchResult[]>;
   private disableSearch = false;
   private errorEmptySearch = true;
   private errorLocation = false;
   private errorLocationMessage = '';
-
 
   static SearchEvents = {
     TEXT: 'TEXT_CHANGED',
@@ -35,7 +37,12 @@ export class SearchComponent implements OnInit {
     ERROR: 'ERROR'
   };
 
-  constructor(private store:Store<any>) {
+  constructor(private store:Store<any>, private storeApp:Store<ApplicationState>) {
+    storeApp.subscribe(state => {
+      console.log(state)
+    })
+
+    this.uiState$ = this.storeApp.select<UiState>('uiState'); //get the latest info about the latest search subject
     this.currentSearch$ = this.store.select<CurrentSearch>('currentSearch'); //get the latest info about the latest search subject
     this.searchResult$ = this.store.select<SearchResult[]>('searchResult');
   }
@@ -45,6 +52,9 @@ export class SearchComponent implements OnInit {
    * Subscribe to the last status of the result as well and show in a list
    */
   ngOnInit() {
+    this.uiState$.subscribe((state: UiState) => {
+      console.log('UISTATE', state);
+    })
     this.currentSearch$.subscribe((state: CurrentSearch) => {
       this.state = state;
       if (state && state.name && state.name.length > 0) {

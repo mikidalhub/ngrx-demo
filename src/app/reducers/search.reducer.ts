@@ -7,11 +7,13 @@ import {SearchActions} from "../store/actions";
 export type CurrentSearchState = CurrentSearch;
 export const initialSearchState:CurrentSearchState = {
   name: '',
-  location: null,
-  radius: null,
-  error: null
+  location: {
+      latitude: 0,
+      longitude: 0
+  },
+  radius: 0,
+  error: ''
 };
-
 
 /**
  * This is the Reducer of the type <CurrentSearch>, that is an object, model in the Store that looks like the initState
@@ -21,7 +23,7 @@ export const initialSearchState:CurrentSearchState = {
  * @constructor
  */
 export const SearchReducer: ActionReducer<CurrentSearch> = (state: CurrentSearch = initialSearchState, action: Action) => {
-    console.log('in SearchReducer', action.type);
+
     switch (action.type) {
         case SearchComponent.SearchEvents.TEXT:
             return Object.assign({}, state, {

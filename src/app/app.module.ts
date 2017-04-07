@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {Store, StoreModule, Action, combineReducers} from "@ngrx/store";
+import {Store, StoreModule, combineReducers} from "@ngrx/store";
 import { RouterModule, Routes } from '@angular/router';
 import {EffectsModule} from '@ngrx/effects';
 import { AppComponent } from './app.component';
@@ -20,7 +20,11 @@ import {SearchActions} from "./store/actions";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import { storeFreeze } from 'ngrx-store-freeze';
 import { compose } from '@ngrx/core/compose';
+import {routerReducer, RouterStoreModule} from "@ngrx/router-store";
 import {INITIAL_APPLICATION_STATE} from "./store/application-state";
+
+import {uiState} from "./reducers/uiStateReducer";
+//import {storeData} from "./store/reducers/uiStoreDataReducer";
 
 @NgModule({
   declarations: [
@@ -41,14 +45,26 @@ import {INITIAL_APPLICATION_STATE} from "./store/application-state";
       { path: 'carousel', component: CarouselComponent },
       { path: 'tabs', component: HsliderComponent },
     ]),
-    StoreModule.provideStore(storeFreeze, compose(combineReducers({
-                                currentSearch: SearchReducer,
-                                searchResult: SearchResultReducer }), INITIAL_APPLICATION_STATE )),
+    //StoreModule.provideStore(compose(storeFreeze, combineReducers)({uiState,storeData, router: routerReducer}), INITIAL_APPLICATION_STATE),
+    //StoreModule.provideStore(storeFreeze, compose(combineReducers({
+    //  uiState: SearchReducer,
+    //  storeData: SearchResultReducer }), INITIAL_APPLICATION_STATE )),
+    StoreModule.provideStore(combineReducers({
+                                            uiState: uiState,
+                                            //storeData: SearchResultReducer,
+                                            router: routerReducer}), INITIAL_APPLICATION_STATE),
+
+    //StoreModule.provideStore(combineReducers({
+    //  currentSearch: SearchReducer,
+    //  searchResult: SearchResultReducer })),
+
+
     EffectsModule.run(SearchEffects),
     StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
   providers: [SearchActions,YoutubeService, GeolocationService],
   bootstrap: [AppComponent]
 })
+
 
 export class AppModule { }

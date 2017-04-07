@@ -8,7 +8,7 @@ import {SearchResultState} from "../reducers/search-result.reducer";
 import {CurrentSearchState} from "../reducers/search.reducer";
 import {initialResultState} from "../reducers/search-result.reducer";
 import {initialSearchState} from "../reducers/search.reducer";
-import {initialSearchState} from "../reducers/search.reducer";
+
 /**
  * The store data is a small in Memory database in the client side
  * The sore is a centralized service that contains the app state and can be injected anywhere
@@ -16,11 +16,9 @@ import {initialSearchState} from "../reducers/search.reducer";
  */
 
 export interface StoreData{
-  //currentSearch: CurrentSearchState;
   searchResult: SearchResultState;
 };
 
 export const INITIAL_STORE_DATA: StoreData = {
-  //currentSearch: initialSearchState,
   searchResult: initialResultState
 };
