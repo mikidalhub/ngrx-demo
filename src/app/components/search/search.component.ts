@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
 
   private state:CurrentSearch;
   private currentSearch$: Observable<CurrentSearch>;
-  private uiState$: Observable<UiState>;
+  //private uiState$: Observable<UiState>;
   private searchResult$: Observable<SearchResult[]>;
   private disableSearch = false;
   private errorEmptySearch = true;
@@ -42,19 +42,20 @@ export class SearchComponent implements OnInit {
       console.log(state)
     })
 
-    this.uiState$ = this.storeApp.select<UiState>('uiState'); //get the latest info about the latest search subject
+  //  this.uiState$ = this.storeApp.select<UiState>('uiState'); //get the latest info about the latest search subject
     this.currentSearch$ = this.store.select<CurrentSearch>('currentSearch'); //get the latest info about the latest search subject
     this.searchResult$ = this.store.select<SearchResult[]>('searchResult');
   }
+
 
   /**
    * Subscribe to the last status of search object, if the typed text on you make the search
    * Subscribe to the last status of the result as well and show in a list
    */
   ngOnInit() {
-    this.uiState$.subscribe((state: UiState) => {
-      console.log('UISTATE', state);
-    })
+    //this.uiState$.subscribe((state: UiState) => {
+    //  console.log('UISTATE', state);
+    //})
     this.currentSearch$.subscribe((state: CurrentSearch) => {
       this.state = state;
       if (state && state.name && state.name.length > 0) {

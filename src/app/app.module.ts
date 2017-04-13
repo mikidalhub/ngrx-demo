@@ -21,9 +21,9 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import { storeFreeze } from 'ngrx-store-freeze';
 import { compose } from '@ngrx/core/compose';
 import {routerReducer, RouterStoreModule} from "@ngrx/router-store";
-import {INITIAL_APPLICATION_STATE} from "./store/application-state";
+//import {INITIAL_APPLICATION_STATE} from "./store/application-state";
 
-import {uiState} from "./reducers/uiStateReducer";
+//import {uiState} from "./reducers/uiStateReducer";
 //import {storeData} from "./store/reducers/uiStoreDataReducer";
 
 @NgModule({
@@ -49,22 +49,22 @@ import {uiState} from "./reducers/uiStateReducer";
     //StoreModule.provideStore(storeFreeze, compose(combineReducers({
     //  uiState: SearchReducer,
     //  storeData: SearchResultReducer }), INITIAL_APPLICATION_STATE )),
-    StoreModule.provideStore(combineReducers({
-                                            uiState: uiState,
-                                            //storeData: SearchResultReducer,
-                                            router: routerReducer}), INITIAL_APPLICATION_STATE),
-
     //StoreModule.provideStore(combineReducers({
-    //  currentSearch: SearchReducer,
-    //  searchResult: SearchResultReducer })),
+    //                                        uiState: uiState,
+    //                                        //storeData: SearchResultReducer,
+    //                                        router: routerReducer}), INITIAL_APPLICATION_STATE),
+
+    StoreModule.provideStore(combineReducers({
+      currentSearch: SearchReducer,
+      searchResult: SearchResultReducer ,
+      router: routerReducer})),
 
 
     EffectsModule.run(SearchEffects),
-    StoreDevtoolsModule.instrumentOnlyWithExtension()
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
   ],
   providers: [SearchActions,YoutubeService, GeolocationService],
   bootstrap: [AppComponent]
 })
-
 
 export class AppModule { }
